@@ -9,6 +9,7 @@ setup(
     version="0.1.0",
     author="Eugen Ciur",
     author_email="eugen@papermerge.com",
+    include_package_data=True,
     url="https://github.com/papermerge/lidl-receipts-de",
     description="Metadata plugin for lidl receipts (used in Germany)",
     long_description=long_description,
