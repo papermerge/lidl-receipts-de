@@ -18,7 +18,7 @@ def get_filepath(filename):
 
 class TestLidl(unittest.TestCase):
 
-    def check(self, filename, price, _date):
+    def check(self, filename, price, _date=None):
         lidl = Lidl()
         file_path = get_filepath(filename)
 
@@ -32,9 +32,10 @@ class TestLidl(unittest.TestCase):
             result['simple_keys']['price'], price
         )
 
-        self.assertEqual(
-            result['simple_keys']['date'], _date
-        )
+        if _date:
+            self.assertEqual(
+                result['simple_keys']['date'], _date
+            )
 
     def test_lidl_1(self):
         self.check(
@@ -59,20 +60,43 @@ class TestLidl(unittest.TestCase):
             _date='27.04,20'
         )
 
-    def test_lidl_4(self):
+    def test_lidl_doc_422_page_2(self):
 
         self.check(
-            "lidl-4.hocr",
-            price='37.77',
-            _date='29.04.20'
+            "doc-422-page-2.hocr",
+            price='19,64',
+            _date='24,04.20'
+        )
+
+    def test_lidl_doc_422_page_3(self):
+
+        self.check(
+            "doc-422-page-3.hocr",
+            price='1317'
+        )
+
+    def test_lidl_doc_361_page_1(self):
+
+        self.check(
+            "doc-361-page-1.hocr",
+            price='38,93',
+            _date='14.04.20'
+        )
+
+    def test_lidl_doc_64_page_1(self):
+
+        self.check(
+            "doc-64-page-1.hocr",
+            price='18,24',
+            _date='04.01,20'
         )
 
     def test_lidl_5(self):
 
         self.check(
             "lidl-5.hocr",
-            price='23.99',
-            _date='24,04,20'
+            price='23,99',
+            _date='24.04.20'
         )
 
     def test_lidl_8(self):
