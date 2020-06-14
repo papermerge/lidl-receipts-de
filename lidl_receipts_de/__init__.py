@@ -26,14 +26,18 @@ class Lidl:
         price_line_pattern = LinePattern(
             ['EUR', re.compile('\d+[\.,]+\d\d$')]  # noqa
         )
-        date_line_pattern = LinePattern(
+        date_line_pattern_1 = LinePattern(
             ['Datum', re.compile('\d\d.\d\d.\d\d')]  # noqa
         )
+        date_line_pattern_2 = LinePattern(
+            ['Datum.', re.compile('\d\d.\d\d.\d\d')]  # noqa
+        )
         price = hocr.get_labeled_value(price_line_pattern)
-        _date = hocr.get_labeled_value(date_line_pattern)
+        _date_1 = hocr.get_labeled_value(date_line_pattern_1)
+        _date_2 = hocr.get_labeled_value(date_line_pattern_2)
 
         result['simple_keys']['price'] = price
-        result['simple_keys']['date'] = _date
+        result['simple_keys']['date'] = _date_1 or _date_2
 
         return result
 
@@ -44,6 +48,6 @@ class Lidl:
         if not first_word:
             return False
 
-        pattern = re.compile('L.D.$')
+        pattern = re.compile('L.D..*')
 
         return re.match(pattern, first_word)
