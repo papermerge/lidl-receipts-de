@@ -13,7 +13,7 @@ class Lidl:
 
     COMP_KEY = []
 
-    def extract(hocr_file_path):
+    def extract(self, hocr_file_path):
         result = {
             'simple_keys': {
                 'shop': 'lidl',
@@ -37,7 +37,7 @@ class Lidl:
 
         return result
 
-    def identify(hocr_file_path):
+    def identify(self, hocr_file_path):
         hocr = Hocron(hocr_file_path)
         first_word = hocr.first_word
 

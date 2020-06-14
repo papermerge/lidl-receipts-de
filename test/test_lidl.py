@@ -1,8 +1,7 @@
 import os
-import re
 import unittest
 
-from hocron import Hocron, LinePattern
+from lidl_receipts_de import Lidl
 
 BASE_DIR = os.path.dirname(
     os.path.abspath(__file__)
@@ -13,23 +12,27 @@ DATA_DIR = os.path.join(
 )
 
 
-def get_hocr(category, filename):
-    hocr = Hocron(
-        os.path.join(DATA_DIR, filename)
-    )
-    return hocr
+def get_filepath(filename):
+    return os.path.join(DATA_DIR, filename)
 
 
 class TestLidl(unittest.TestCase):
 
     def test_lidl_1(self):
 
-        hocr = get_hocr("lidl-1.hocr")
+        lidl = Lidl()
+        file_path = get_filepath("lidl-1.hocr")
 
-        line_pattern = LinePattern(
-            ['EUR', re.compile('\d+[\.,]\d\d$')]
-        )  # noqa
-        value = hocr.get_labeled_value(line_pattern)
+        self.assertTrue(
+            lidl.identify(file_path)
+        )
 
-        self.assertTrue(value)
-        self.assertEqual(value, '41,92')
+        result = lidl.extract(file_path)
+
+        self.assertEqual(
+            result['simple_keys']['price'], '39,68'
+        )
+
+        self.assertEqual(
+            result['simple_keys']['date'], '04.05,20'
+        )
