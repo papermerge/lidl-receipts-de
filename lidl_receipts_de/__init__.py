@@ -11,8 +11,6 @@ class Lidl:
         'date'
     ]
 
-    COMP_KEY = []
-
     def extract(self, hocr_file_path):
         result = {
             'simple_keys': {
@@ -44,14 +42,3 @@ class Lidl:
         result['simple_keys']['date'] = _date_1 or _date_2
 
         return result
-
-    def identify(self, hocr_file_path):
-        hocr = Hocron(hocr_file_path)
-        first_word = hocr.first_word
-
-        if not first_word:
-            return False
-
-        pattern = re.compile('L..*D..*')
-
-        return re.match(pattern, first_word)

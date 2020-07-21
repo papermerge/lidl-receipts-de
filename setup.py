@@ -5,8 +5,8 @@ with open("README.md", "r") as fh:
 
 
 setup(
-    name="lidl-recepts-de",
-    version="0.1.0",
+    name="papermerge-meta-plugin-lidl-receipts-de",
+    version="0.2.0",
     author="Eugen Ciur",
     author_email="eugen@papermerge.com",
     include_package_data=True,

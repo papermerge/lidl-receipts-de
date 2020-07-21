@@ -22,10 +22,6 @@ class TestLidl(unittest.TestCase):
         lidl = Lidl()
         file_path = get_filepath(filename)
 
-        self.assertTrue(
-            lidl.identify(file_path)
-        )
-
         result = lidl.extract(file_path)
 
         self.assertEqual(
