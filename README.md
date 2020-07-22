@@ -5,17 +5,17 @@ Papermerge metadata plugin for lidl receipts  used in Germany
 
 This plugin returns 3 metadata labels/keys named as follows:
 
-    * shop
-    * price
-    * date
+* shop
+* price
+* date
 
 On the main app you need to keep in mind that:
 
-    * shop - has free text format
-    * price - is of type money (as per main app), with
-        format "dd,cc". Example: 38,95
-    * date - is of type date (as per main app), with
-        format "dd.mm.yy". Example: 21.12.19 - 21st of December 2019
+* shop - has free text format
+* price - is of type money (as per main app), with
+    format "dd,cc". Example: 38,95
+* date - is of type date (as per main app), with
+    format "dd.mm.yy". Example: 21.12.19 - 21st of December 2019
 
 ## Installation
 
