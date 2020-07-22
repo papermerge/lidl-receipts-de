@@ -1,3 +1,4 @@
+import io
 import re
 
 from hocron import Hocron, LinePattern
@@ -11,7 +12,7 @@ class Lidl:
         'date'
     ]
 
-    def extract(self, hocr_file_path):
+    def extract(self, hocr: io.BytesIO):
         result = {
             'simple_keys': {
                 'shop': 'lidl',
@@ -20,7 +21,10 @@ class Lidl:
             },
             'comp_key': []
         }
-        hocr = Hocron(hocr_file_path)
+        # hocron module is a thin layer of API for HOCR format
+        # processing
+        hocr = Hocron(hocr)
+
         price_line_pattern_1 = LinePattern(
             ['EUR', re.compile('\d+[\.,]+\d\d$')]  # noqa
         )
@@ -38,6 +42,8 @@ class Lidl:
         _date_1 = hocr.get_labeled_value(date_line_pattern_1)
         _date_2 = hocr.get_labeled_value(date_line_pattern_2)
 
+        # in future there will be 'comp keys', that's why
+        # it is a good idea to keep a separate namespace
         result['simple_keys']['price'] = price_1 or price_2
         result['simple_keys']['date'] = _date_1 or _date_2
 

@@ -1,3 +1,4 @@
+import io
 import os
 import unittest
 
@@ -21,8 +22,12 @@ class TestLidl(unittest.TestCase):
     def check(self, filename, price, _date=None):
         lidl = Lidl()
         file_path = get_filepath(filename)
+        hocr_data = io.BytesIO()
 
-        result = lidl.extract(file_path)
+        with open(get_filepath(file_path), "b+r") as f:
+            hocr_data = io.BytesIO(f.read())
+
+        result = lidl.extract(hocr_data)
 
         self.assertEqual(
             result['simple_keys']['price'], price
