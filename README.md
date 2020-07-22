@@ -3,13 +3,41 @@ Lidl Receipts (Germany)
 
 Papermerge metadata plugin for lidl receipts  used in Germany
 
+This plugin returns 3 metadata labels/keys named as follows:
+
+    * shop
+    * price
+    * date
+
+On the main app you need to keep in mind that:
+
+    * shop - has free text format
+    * price - is of type money (as per main app), with
+        format "dd,cc". Example: 38,95
+    * date - is of type date (as per main app), with
+        format "dd.mm.yy". Example: 21.12.19 - 21st of December 2019
+
 ## Installation
 
     pip install lidl-receipts-de
 
-In papermerge.conf add "lidl_receipts_de" entry to PAPERMERGE_METADATA_PLUGINS:
+In papermerge.conf add "lidl_receipts_de.Lidl" entry to METADATA_PLUGINS:
 
-    PAPERMERGE_METADATA_PLUGINS=["lidl_receipts_de", ...]
+    METADATA_PLUGINS = [
+        "lidl_receipts_de.Lidl", ...
+    ]
+
+In case you want to map returned metadata to differently named keys:
+
+
+    METADATA_PLUGIN_MAPS = {
+        "lidl_receipts_de.Lidl": {
+            "shop": "Firma",
+            "price": "Betrag",
+            "date": "Datum",
+        },
+    }
+
 
 
 ## Prepare Development Environment & Run Tests
