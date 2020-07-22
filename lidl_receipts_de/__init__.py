@@ -1,4 +1,3 @@
-import io
 import re
 
 from hocron import Hocron, LinePattern
@@ -12,7 +11,7 @@ class Lidl:
         'date'
     ]
 
-    def extract(self, hocr: io.BytesIO):
+    def extract(self, hocr):
         result = {
             'simple_keys': {
                 'shop': 'lidl',
