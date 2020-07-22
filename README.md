@@ -19,7 +19,15 @@ On the main app you need to keep in mind that:
 
 ## Installation
 
-    pip install lidl-receipts-de
+    pip install papermerge-meta-plugin-lidl-receipts-de
+
+Notice that for configuration you will use plugin name WITHOUT prefix (i.e.
+without papermerge-meta-plugin- part).
+Also, for importing this module you need to use name WITHOUT prefix:
+
+    import lidl_receipts_de
+
+Usually you don't need to import plugin directly, main app does it for you.
 
 In papermerge.conf add "lidl_receipts_de.Lidl" entry to METADATA_PLUGINS:
 
