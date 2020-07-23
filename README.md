@@ -1,6 +1,8 @@
 Lidl Receipts (Germany) 
 =======================
 
+![Lidl Receipt](./img/lidl-receipt.png)
+
 Papermerge metadata plugin for lidl receipts  used in Germany.
 
 This plugin returns 3 metadata labels/keys named as follows:
