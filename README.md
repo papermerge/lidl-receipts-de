@@ -1,9 +1,10 @@
-Lidl Receipts (Germany) 
+Lidl Receipts (Germany)
 =======================
+
+[Papermerge DMS](https://github.com/ciur/papermerge) metadata extractor plugin for lidl receipts used in Germany.
 
 ![Lidl Receipt](./img/lidl-receipt.png)
 
-Papermerge metadata plugin for lidl receipts  used in Germany.
 
 This plugin returns 3 metadata labels/keys named as follows:
 
